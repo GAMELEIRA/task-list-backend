@@ -5,6 +5,7 @@ import { AppService } from './app.service';
 import { Credential } from './feature/users/entities/credential.entity';
 import { User } from './feature/users/entities/user.entity';
 import { UsersModule } from './feature/users/users.module';
+import { AuthModule } from './feature/auth/auth.module';
 
 @Module({
   imports: [
@@ -19,6 +20,7 @@ import { UsersModule } from './feature/users/users.module';
       synchronize: true,
     }),
     UsersModule,
+    AuthModule,
   ],
   controllers: [AppController],
   providers: [AppService],

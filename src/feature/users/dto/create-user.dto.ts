@@ -1,5 +1,7 @@
-import { User } from '../entities/user.entity';
+import { Credential } from '../entities/credential.entity';
 
 export class CreateUserDto {
-  user: User;
+  credential: Credential;
+  name: string;
+  lastName: string;
 }
