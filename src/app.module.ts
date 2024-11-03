@@ -14,7 +14,7 @@ import { UsersModule } from './feature/users/users.module';
       port: 3306,
       username: 'root',
       password: '1234',
-      database: 'task-list',
+      database: 'TASKLIST',
       entities: [User, Credential],
       synchronize: true,
     }),
