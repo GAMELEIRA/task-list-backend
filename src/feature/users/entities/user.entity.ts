@@ -1,7 +1,9 @@
+import { Task } from 'src/feature/task/entities/task.entity';
 import {
   Column,
   Entity,
   JoinColumn,
+  OneToMany,
   OneToOne,
   PrimaryGeneratedColumn,
 } from 'typeorm';
@@ -13,8 +15,11 @@ export class User {
   id: number;
 
   @OneToOne(() => Credential, { cascade: true })
-  @JoinColumn({ name: 'id_credential' })
+  @JoinColumn({ name: 'idCredential' })
   credential: Credential;
+
+  @OneToMany(() => Task, (task) => task.user)
+  tasks: Task[];
 
   @Column()
   name: string;
