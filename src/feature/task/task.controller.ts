@@ -1,4 +1,4 @@
-import { Body, Controller, Post } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
 import { PRODUCTION } from 'src/shared/configs/enviroment';
 import { CreateTaskDto } from './dto/create-task.dto';
@@ -10,14 +10,15 @@ export class TaskController {
   constructor(private readonly taskService: TaskService) {}
 
   @Post()
-  create(@Body() createTaskDto: CreateTaskDto) {
-    return this.taskService.create(createTaskDto);
+  async create(@Body() createTaskDto: CreateTaskDto) {
+    const rest = await this.taskService.create(createTaskDto);
+    return rest;
   }
 
-  // @Get()
-  // findAll() {
-  //   return this.taskService.findAll();
-  // }
+  @Get('user/:userId')
+  findTasksByUserId(@Param('userId') userId: number) {
+    return this.taskService.findTasksByUserId(userId);
+  }
 
   // @Get(':id')
   // findOne(@Param('id') id: string) {
