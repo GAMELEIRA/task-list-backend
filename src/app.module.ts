@@ -2,10 +2,12 @@ import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
+import { AuthModule } from './feature/auth/auth.module';
+import { Task } from './feature/task/entities/task.entity';
+import { TaskModule } from './feature/task/task.module';
 import { Credential } from './feature/users/entities/credential.entity';
 import { User } from './feature/users/entities/user.entity';
 import { UsersModule } from './feature/users/users.module';
-import { AuthModule } from './feature/auth/auth.module';
 
 @Module({
   imports: [
@@ -16,11 +18,12 @@ import { AuthModule } from './feature/auth/auth.module';
       username: 'root',
       password: '1234',
       database: 'TASKLIST',
-      entities: [User, Credential],
+      entities: [User, Credential, Task],
       synchronize: true,
     }),
     UsersModule,
     AuthModule,
+    TaskModule,
   ],
   controllers: [AppController],
   providers: [AppService],

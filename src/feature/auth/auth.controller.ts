@@ -13,7 +13,6 @@ export class AuthController {
   @Post()
   create(@Body() createAuthDto: CreateAuthDto, @Res() res: Response) {
     this.authService.auth(createAuthDto).then((data) => {
-      console.log(data, 'retorno da busca');
       if (data) {
         return res.status(HttpStatus.CREATED).json({
           status: HttpStatus.CREATED,
