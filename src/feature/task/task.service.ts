@@ -28,10 +28,6 @@ export class TaskService {
   }
 
   async findTasksByUserId(userId: number) {
-    const test = await this.taskRepository.find({
-      where: { user: { id: userId } },
-    });
-
     return await this.taskRepository.find({
       where: { user: { id: userId } },
     });
